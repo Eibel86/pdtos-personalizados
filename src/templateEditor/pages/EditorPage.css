@@ -1,0 +1,21 @@
+.plantilla {
+    width: 756px;
+    height: 340px;
+    border: 1px solid black;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.plantilla-editor {
+    width: 756px;
+    /* 20 cm aprox */
+    height: 340px;
+    /* 9 cm aprox */
+    border: 2px solid white;
+    background-color: white;
+    position: relative;
+    margin: 20px auto;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
