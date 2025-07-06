@@ -16,7 +16,7 @@ import { useState } from "react"
 
 export const AppRoutes = () => {
 
-    const [isLoged, setsLoged] = useState(false)
+    const [isLoged, setsLoged] = useState(true)
 
     return (
         <div className='container pt-3'>
