@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./EditorPage.css";
+import "./index.css";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 export const EditorPage = () => {
+
+    const divRef = useRef();
+
     const [patronSeleccionado, setPatronSeleccionado] = useState("");
 
     const [position1, setPosition1] = useState({ x: 0, y: 0 });
@@ -62,6 +67,52 @@ export const EditorPage = () => {
             window.removeEventListener("mouseup", handleMouseUp);
         };
     });
+
+    const handleChange = ({ target }) => {
+        console.log(target.value)
+        console.log(target.name)
+
+        if (target.name == "borderStyle") {
+            cajaImagen1.current.style.borderStyle = target.value
+        }
+        if (target.name == "borderWidth") {
+            cajaImagen1.current.style.borderWidth = `${target.value}px`
+        }
+
+        if (target.name === "shape") {
+            cajaImagen1.current.classList.remove("square", "circle", "diamond", "star");
+            cajaImagen1.current.classList.add(target.value);
+        }
+        if (target.name === "size") {
+            cajaImagen1.current.style.width = `${target.value}px`;
+            cajaImagen1.current.style.height = `${target.value}px`;
+        }
+    }
+
+
+
+    const generarPDF = async () => {
+        // cambiar medidas
+        const canvas = await html2canvas(divRef.current, {
+            scale: 2
+        });
+
+
+        const imgData = canvas.toDataURL('image/jpeg');
+
+        // Tamaño del PDF: 756px x 340.2px → en mm: 200 x 90
+        const pdf = new jsPDF({
+            orientation: 'landscape',
+            unit: 'mm',
+            format: [200, 90],
+        });
+
+        pdf.addImage(imgData, 'JPEG', 0, 0, 200, 90);
+        pdf.save('patron.pdf');
+        //restablecer medidas
+    };
+
+
     return (
         <>
             <div>
@@ -86,6 +137,7 @@ export const EditorPage = () => {
 
                 <div
                     className="plantilla-editor"
+                    ref={divRef}
                     style={{
                         position: "relative", //importante si mueves elementos dentro
                         backgroundImage: patronSeleccionado ? `url(${patronSeleccionado})` : "none",
@@ -149,6 +201,55 @@ export const EditorPage = () => {
                         <img className="img3" src="/assets/sargento.png" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                 </div>
+
+                <hr />
+
+                <form action="">
+                    <h2>Borde grosor</h2>
+                    <input onChange={handleChange} type="range" min='0' max='10' step='1' value='4' name='borderWidth' />
+                    <h2>Borde tipo</h2>
+                    <select onChange={handleChange} name="borderStyle" id="">
+                        <option value="dotted">Punteado</option>
+                        <option value="solid">Solido</option>
+                        <option value="dashed">Guiones</option>
+                        <option value="double">Dobles</option>
+                        <option value="none">Sin borde</option>
+                    </select>
+                    <br />
+                    <h2>Borde color</h2>
+                    <select onChange={handleChange} name="borderColor" id="">
+                        <option value="white">Blanco</option>
+                        <option value="black">Negro</option>
+                        <option value="blue">Azul</option>
+                        <option value="red">Rojo</option>
+                    </select>
+                    <h2>Forma de imagen</h2>
+                    <select onChange={handleChange} name="shape">
+                        <option value="square">Cuadrado</option>
+                        <option value="circle">Círculo</option>
+                        <option value="diamond">Rombo</option>
+                        <option value="star">Estrella</option>
+                    </select>
+                    <h2>Tamaño Imagen (px)</h2>
+                    <input
+                        onChange={handleChange}
+                        type="range"
+                        name="size"
+                        min="50"
+                        max="400"
+                        step="10"
+                        defaultValue="200"
+                    />
+
+                </form>
+
+
+                <hr />
+
+                <button onClick={generarPDF} style={{ marginTop: '20px' }}>
+                    Descargar PDF
+                </button>
+
             </div>
         </>
     );
