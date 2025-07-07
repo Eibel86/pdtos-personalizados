@@ -25,9 +25,51 @@ export const NavBar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to='/Register'
+                        to='/register'
                         className={({ isActive }) => isActive ? 'activa' : ''}>
                         Register
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to='/user/product'
+                        className={({ isActive }) => isActive ? 'activa' : ''}>
+                        Product
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to='/user/editor'
+                        className={({ isActive }) => isActive ? 'activa' : ''}>
+                        Editor
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to='/user/favourite'
+                        className={({ isActive }) => isActive ? 'activa' : ''}>
+                        Favourite
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to='/admin/product'
+                        className={({ isActive }) => isActive ? 'activa' : ''}>
+                        Admin Product
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to='/admin/editor'
+                        className={({ isActive }) => isActive ? 'activa' : ''}>
+                        Admin Editor
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to='/admin/service'
+                        className={({ isActive }) => isActive ? 'activa' : ''}>
+                        Admin Service
                     </NavLink>
                 </li>
             </ul >
