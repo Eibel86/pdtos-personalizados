@@ -153,8 +153,8 @@ export const EditorPage = () => {
                         ref={cajaImagen1}
                         onMouseDown={(e) => handleMouseDown("box1", e)}
                         style={{
-                            width: '200px',
-                            height: '200px',
+                            width: '300px',
+                            objectFit: 'cover',
                             borderWidth: '1px',
                             borderStyle: 'solid',
                             borderColor: 'black',
@@ -164,7 +164,7 @@ export const EditorPage = () => {
                             cursor: dragging ? 'grabbing' : 'grab',
                         }}
                     >
-                        <img className="img1" src="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        <img className="img1" src="/assets/sargento.png" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     <div
                         ref={cajaImagen2}
@@ -172,6 +172,7 @@ export const EditorPage = () => {
                         style={{
                             width: '200px',
                             height: '200px',
+                            objectFit: 'cover',
                             borderWidth: '1px',
                             borderStyle: 'solid',
                             borderColor: 'black',
@@ -181,7 +182,7 @@ export const EditorPage = () => {
                             cursor: dragging ? 'grabbing' : 'grab',
                         }}
                     >
-                        <img className="img2" src="/assets/SARGENTO MAIDEL.png" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        <img className="img2" src="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     <div
                         ref={cajaImagen3}
@@ -198,7 +199,7 @@ export const EditorPage = () => {
                             cursor: dragging ? 'grabbing' : 'grab',
                         }}
                     >
-                        <img className="img3" src="/assets/sargento.png" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        <img className="img3" src="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                 </div>
 
@@ -250,7 +251,7 @@ export const EditorPage = () => {
                     Descargar PDF
                 </button>
 
-            </div>
+            </div >
         </>
     );
 
