@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./editorPage.css";
+import "./EditorPage.css";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { MyImages } from "../components/MyImages";
+import { ElegirPdto } from "../components/ElegirPdto";
+import { ImagesForm } from "../components/ImagesForm";
 
 export const EditorPage = () => {
 
@@ -76,10 +78,7 @@ export const EditorPage = () => {
             <div>
                 <h1>Editor plantilla</h1>
             </div>
-            <div>
-                <input type="text" name="texto1" id="texto1" placeholder="Se busca x tipo de plantilla" />
-                <button>Buscar</button>
-            </div>
+            <ElegirPdto />
             <div>
                 <div style={{ marginBottom: "1rem" }}>
                     <button onClick={() => setPatronSeleccionado("/assets/plantilla1.png")}>
@@ -93,8 +92,13 @@ export const EditorPage = () => {
                     </button>
                 </div>
                 <div>
-                    <label htmlFor="texto1" className="form-label">Imagen</label>
-                    <input type="text" name="texto1" id="texto1" />
+                    <label htmlFor="imagen" className="boton-cargarImagen">Cargar imagen</label>
+                    <input
+                        type="file"
+                        name="image"
+                        id="imagen"
+                        className="input-oculto"
+                    />
                 </div>
                 <div>
                     <label htmlFor="texto1" className="form-label">Texto</label>
@@ -123,56 +127,11 @@ export const EditorPage = () => {
                 </div>
 
                 <hr />
+                <div className="table-controllers">
+                    <ImagesForm handleChange={handleChange} />
+                    <ImagesForm handleChange={handleChange} />
 
-                <form action="">
-                    <div>
-                        <label for='borderWidth'>Borde grosor:&emsp;</label>
-                        <input onChange={handleChange} type="range" min='0' max='10' step='1' value={grosor} name='borderWidth' id='borderWidth' />
-                    </div>
-                    <div>
-                        <label for='borderStyle' >Borde tipo:&emsp;</label>
-                        <select onChange={handleChange} name="borderStyle" id="borderStyle">
-                            <option value="dotted">Punteado</option>
-                            <option value="solid">Solido</option>
-                            <option value="dashed">Guiones</option>
-                            <option value="double">Dobles</option>
-                            <option value="none">Sin borde</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for='borderColor' >Borde color:&emsp;</label>
-                        <select onChange={handleChange} name="borderColor" id="borderColor">
-                            <option value="white">Blanco</option>
-                            <option value="black">Negro</option>
-                            <option value="blue">Azul</option>
-                            <option value="red">Rojo</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for='shape' >Forma:&emsp;</label>
-                        <select onChange={handleChange} name="shape" id="shape">
-                            <option value="square">Cuadrado</option>
-                            <option value="circle">Círculo</option>
-                            <option value="diamond">Rombo</option>
-                            <option value="star">Estrella</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for='size' >Tamaño:&emsp;</label>
-                        <input
-                            onChange={handleChange}
-                            type="range"
-                            name="size"
-                            id="size"
-                            min="50"
-                            max="400"
-                            step="10"
-                            defaultValue="200" />
-                    </div>
-
-
-
-                </form>
+                </div>
 
 
                 <hr />

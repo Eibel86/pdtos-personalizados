@@ -24,6 +24,14 @@
     align-items: center;
 }
 
+
+.wrapper {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .img1 {
     width: 100%;
     /* height: 100%; */
@@ -48,4 +56,41 @@
 
 .diamond>img {
     transform: rotate(-45deg);
+}
+
+.boton-cargarImagen {
+    background-color: #8d918d;
+    color: black;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.input-oculto {
+    display: none;
+}
+
+.form-container {
+    width: 30%;
+    padding: 1%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.space-between {
+    /* margin: 2% auto;
+    font-size: 0.9rem; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-image select,
+.form-image input {
+    width: 50%;
+}
+
+.table-controllers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

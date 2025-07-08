@@ -3,31 +3,21 @@
 export const MyImages = ({ grosor, estilo, color, tamanio, forma }) => {
     return (
         <div
-            className={forma}       //falta aplicar el borde de la imagen.
+            className={`wrapper ${forma}`}    // [circle, square, diamons] 
             // ref={cajaImagen1}
             style={{
-                // width: `${tamanio}px`,
-                // height: `${tamanio}px`,
-                objectFit: 'cover',
-                overflow: 'hidden',
+                width: `${tamanio}px`,
+                height: `${tamanio}px`,
                 borderWidth: `${grosor}px`,
                 borderStyle: estilo,
                 borderColor: color,
-
-
+                backgroundColor: 'white'
             }}
         >
             <img
                 className="img1"
                 src="/assets/sargento.png"
-                style={{
-                    width: `${tamanio}px`,
-                    height: "auto",
-                    objectFit: "cover",
-                    display: "flex",
-                    justifyContent: "center",/* centra horizontalmente */
-                    alignItems: "center",
-                }} />
+            />
         </div>
 
 

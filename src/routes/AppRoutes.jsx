@@ -9,9 +9,9 @@ import { ProductPage } from "../templateEditor/pages/ProductPage"
 import { EditorPage } from "../templateEditor/pages/EditorPage"
 import { FavouritePage } from "../templateEditor/pages/FavouritePage"
 
-import { PdtoAdminPage } from "../templateEditor/pages/PdtoAdminPage"
-import { TemplateAdminPage } from "../templateEditor/pages/TemplateAdminPage"
-import { ServiceAdminPage } from "../templateEditor/pages/ServiceAdminPage"
+import { PdtoAdminPage } from "../admin/pages/PdtoAdminPage"
+import { TemplateAdminPage } from "../admin/pages/TemplateAdminPage"
+import { ServiceAdminPage } from "../admin/pages/ServiceAdminPage"
 import { useState } from "react"
 
 export const AppRoutes = () => {
