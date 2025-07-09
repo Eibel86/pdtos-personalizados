@@ -1,11 +1,11 @@
 
 
-export const ImagesForm = ({ handleChange, grosor }) => {
+export const ImagesForm = ({ handleChange, grosor, id }) => {
 
     return (
         <div className="form-container">
             <h5>Controlador de imagen</h5>
-            <form action="" className="form-image">
+            <form action="" className="form-image" id={id}>
                 <div className="space-between">
                     <label for='borderWidth'>Borde:</label>
                     <input onChange={handleChange} type="range" min='0' max='10'
@@ -50,11 +50,7 @@ export const ImagesForm = ({ handleChange, grosor }) => {
                         step="10"
                         defaultValue="200" />
                 </div>
-
-
-
             </form>
-
         </div>
     )
 }
