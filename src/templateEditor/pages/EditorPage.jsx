@@ -13,42 +13,41 @@ export const EditorPage = () => {
     const [patronSeleccionado, setPatronSeleccionado] = useState("");
 
     // Estados para estilos de iamgenes
-    const [grosor, setGrosor] = useState(4)
-    const [estilo, setEstilo] = useState('double')
-    const [color, setColor] = useState('blue')
-    const [tamanio, setTamanio] = useState()
-    const [forma, setForma] = useState('circle')
+    const [estilos, setEstilos] = useState({
+        grosor: 4,
+        estilo: "double",
+        color: "blue",
+        size: 100,
+        forma: "square"
+    })
 
+    const [arrayImagenes, setArrayImagenes] = useState([
+        {
+            id: 1,
+            url: '/assets/sargento.png'
+        },
+        {
+            id: 2,
+            url: '/assets/pikaxu.jpg'
+        },
+        {
+            id: 3,
+            url: '/assets/mario1.jpg'
+        }
 
-
-    const cajaImagen1 = useRef();
-    const cajaImagen2 = useRef();
-    const cajaImagen3 = useRef();
-
-    const cajaTexto1 = useRef();
+    ])
 
     const handleChange = ({ target }) => {
         console.log(target.value)
         console.log(target.name)
 
-        if (target.name == "borderStyle") {
-            setEstilo(target.value)
-        }
-        if (target.name == "borderWidth") {
-            setGrosor(target.value)
-        }
-        if (target.name == "borderColor") {
-            setColor(target.value)
-        }
+        setEstilos({ ...estilos, [target.name]: target.value })
 
-        if (target.name === "shape") {
-            setForma(target.value)
-        }
-        if (target.name === "size") {
-            setTamanio(target.value)
-        }
     }
-
+    const cambiarImagen = () => {
+        //subir imagen con multer 
+        //setear arrayImagenes
+    }
 
 
     const generarPDF = async () => {
@@ -91,8 +90,23 @@ export const EditorPage = () => {
                         Sin Patrón
                     </button>
                 </div>
-                <div>
-                    <label htmlFor="imagen" className="boton-cargarImagen">Cargar imagen</label>
+                <div className="botones-imagenes">
+                    <label htmlFor="imagen" className="boton-cargarImagen"
+                        onChange={cambiarImagen}>Cargar imagen 1</label>
+                    <input
+                        type="file"
+                        name="image"
+                        id="imagen"
+                        className="input-oculto"
+                    />
+                    <label htmlFor="imagen" className="boton-cargarImagen">Cargar imagen 2</label>
+                    <input
+                        type="file"
+                        name="image"
+                        id="imagen"
+                        className="input-oculto"
+                    />
+                    <label htmlFor="imagen" className="boton-cargarImagen">Cargar imagen 3</label>
                     <input
                         type="file"
                         name="image"
@@ -100,9 +114,14 @@ export const EditorPage = () => {
                         className="input-oculto"
                     />
                 </div>
-                <div>
-                    <label htmlFor="texto1" className="form-label">Texto</label>
-                    <input type="text" name="texto1" id="texto1" />
+
+                <div className="texto-imagen">
+
+                    <input type="text" name="texto1" id="texto1" placeholder="Escriba texto1" />
+
+                    <input type="text" name="texto1" id="texto1" placeholder="Escriba texto2" />
+
+                    <input type="text" name="texto1" id="texto1" placeholder="Escriba texto3" />
                 </div>
 
                 <div
@@ -119,25 +138,33 @@ export const EditorPage = () => {
                 >
                     {/* Aquí irán imágenes/textos */}
 
-
-                    <MyImages grosor={grosor} estilo={estilo} color={color} tamanio={tamanio} forma={forma} />
-                    <MyImages grosor={grosor} estilo={estilo} color={color} tamanio={tamanio} forma={forma} />
-
-
+                    {
+                        arrayImagenes.map((imagen) => {
+                            return <MyImages
+                                grosor={estilos.grosor} estilo={estilos.estilo}
+                                color={estilos.color} tamanio={estilos.size}
+                                forma={estilos.forma} url={imagen.url} />
+                        })
+                    }
                 </div>
 
                 <hr />
+
                 <div className="table-controllers">
-                    <ImagesForm handleChange={handleChange} />
-                    <ImagesForm handleChange={handleChange} />
 
+                    {
+                        arrayImagenes.map((control) => {
+                            return (
+                                <ImagesForm handleChange={handleChange} />
+                            )
+                        })
+                    }
                 </div>
-
 
                 <hr />
 
                 <button onClick={generarPDF} style={{ marginTop: '20px' }}>
-                    Descargar PDF
+                    Enviar
                 </button>
 
             </div >

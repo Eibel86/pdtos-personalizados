@@ -25,7 +25,7 @@ export const ElegirPdto = () => {
                 <option value="">-- Selecciona un producto --</option>
                 <option value="taza-blanca">Taza blanca</option>
                 <option value="taza-negra">Taza negra</option>
-                <option value="camiseta">Camiseta</option>
+                <option value="botella">Botella</option>
             </select>
             <br />
 

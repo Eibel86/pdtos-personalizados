@@ -1,6 +1,6 @@
 
 
-export const MyImages = ({ grosor, estilo, color, tamanio, forma }) => {
+export const MyImages = ({ grosor, estilo, color, tamanio, forma, url }) => {
     return (
         <div
             className={`wrapper ${forma}`}    // [circle, square, diamons] 
@@ -16,7 +16,7 @@ export const MyImages = ({ grosor, estilo, color, tamanio, forma }) => {
         >
             <img
                 className="img1"
-                src="/assets/sargento.png"
+                src={url}
             />
         </div>
 

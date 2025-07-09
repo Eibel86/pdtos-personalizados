@@ -8,11 +8,12 @@ export const ImagesForm = ({ handleChange, grosor }) => {
             <form action="" className="form-image">
                 <div className="space-between">
                     <label for='borderWidth'>Borde:</label>
-                    <input onChange={handleChange} type="range" min='0' max='10' step='1' value={grosor} name='borderWidth' id='borderWidth' />
+                    <input onChange={handleChange} type="range" min='0' max='10'
+                        step='1' value={grosor} name='grosor' id='borderWidth' />
                 </div>
                 <div className="space-between">
                     <label for='borderStyle' >Linea:</label>
-                    <select onChange={handleChange} name="borderStyle" id="borderStyle">
+                    <select onChange={handleChange} name="estilo" id="borderStyle">
                         <option value="dotted">Punteado</option>
                         <option value="solid">Solido</option>
                         <option value="dashed">Guiones</option>
@@ -22,7 +23,7 @@ export const ImagesForm = ({ handleChange, grosor }) => {
                 </div>
                 <div className="space-between">
                     <label for='borderColor' >Color:</label>
-                    <select onChange={handleChange} name="borderColor" id="borderColor">
+                    <select onChange={handleChange} name="color" id="borderColor">
                         <option value="white">Blanco</option>
                         <option value="black">Negro</option>
                         <option value="blue">Azul</option>
@@ -31,7 +32,7 @@ export const ImagesForm = ({ handleChange, grosor }) => {
                 </div>
                 <div className="space-between">
                     <label for='shape' >Forma:</label>
-                    <select onChange={handleChange} name="shape" id="shape">
+                    <select onChange={handleChange} name="forma" id="shape">
                         <option value="square">Cuadrado</option>
                         <option value="circle">Círculo</option>
                         <option value="diamond">Rombo</option>

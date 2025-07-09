@@ -94,3 +94,15 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
+.botones-imagenes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.texto-imagen {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
